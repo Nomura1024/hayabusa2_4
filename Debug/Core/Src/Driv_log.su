@@ -1,0 +1,9 @@
+Driv_log.c:42:6:log_init	4	static
+Driv_log.c:51:6:speed_sloow	32	static
+Driv_log.c:56:6:log_write	16	static
+Driv_log.c:62:13:first_cale	24	static
+Driv_log.c:133:13:first_driv	16	static
+Driv_log.c:156:5:logsecond_Speed	32	static
+Driv_log.c:246:13:log_Cal	112	static
+Driv_log.c:428:13:second_driv	48	static
+Driv_log.c:579:6:log_play	120	static

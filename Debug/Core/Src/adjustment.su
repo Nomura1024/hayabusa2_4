@@ -1,0 +1,15 @@
+adjustment.c:20:6:adjust_spped	8	static
+adjustment.c:47:6:adjust_Kp	8	static
+adjustment.c:75:6:adjust_Ki	8	static
+adjustment.c:101:6:adjust_Kd	8	static
+adjustment.c:128:6:tuning	8	static
+adjustment.c:141:6:adjust_Accm	8	static
+adjustment.c:171:6:adjust_Decm	8	static
+adjustment.c:201:6:accel_tuning	8	static
+adjustment.c:210:6:adjust_spped_100	16	static
+adjustment.c:236:6:adjust_spped_300	16	static
+adjustment.c:262:6:adjust_spped_500	16	static
+adjustment.c:288:6:adjust_spped_800	16	static
+adjustment.c:314:6:adjust_spped_1000	16	static
+adjustment.c:340:6:adjust_spped_MAX	16	static
+adjustment.c:366:6:speed_tuning	8	static

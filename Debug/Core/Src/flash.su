@@ -1,0 +1,4 @@
+flash.c:23:6:Flash_clear	40	static
+flash.c:42:6:Flash_clear2	40	static
+flash.c:64:11:Flash_load	8	static
+flash.c:70:6:Flash_store	32	static
