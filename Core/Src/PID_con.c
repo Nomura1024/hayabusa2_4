@@ -46,6 +46,7 @@ inline float speed_get(){
 	float speedget_L=0;
 	float speedget_R=0;
 	float load_L,load_R=0;
+	static float val=0;
 	float load=0;
 	int L=0;
 	int R=0;

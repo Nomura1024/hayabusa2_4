@@ -133,25 +133,30 @@ inline void first_cale(){
 inline void first_driv(float log){
 	static float logbuff=0;
 	static float buff=0;
-	logbuff = logbuff + log;
-//	if(logbuff>=10.000){
-//		log_flag = 1;
-//		log2_flag=1;
-//		load_log += logbuff-buff;
-//		logbuff = logbuff-10.0;
-//		buff = logbuff;
-//		log_count++;
-//
-//	}
-	if(logbuff>=10.000){
-		log_flag = 1;
-		log2_flag=1;
-		load_log += logbuff;
-		logbuff = 0;
-		//buff = logbuff;
-		log_count++;
+	//	logbuff = logbuff + log;
 
-	}
+		logbuff += log;
+		load_log =logbuff;
+	//	if(logbuff>=10.000){
+	//		log_flag = 1;
+	//		log2_flag=1;
+	//		load_log += logbuff-buff;
+	//		logbuff = logbuff-10.0;
+	//		buff = logbuff;
+	//		log_count++;
+	//
+	//	}
+		if((logbuff-buff)>=10.000){
+			log_flag = 1;
+			log2_flag=1;
+
+			buff = logbuff;
+
+			//logbuff = 0;
+			//buff = logbuff;
+			log_count++;
+
+		}
 }
 int logsecond_Speed(double h){
 	int spee=1300;
