@@ -288,7 +288,7 @@ void mode(){
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2060);
 //				fan_pressure(13.4,13.4);
 //			}else {
-				fan_pressure(100,100);
+				fan_pressure(120,120);
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 2020);
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2080);
 //			}
@@ -399,7 +399,7 @@ int main(void)
  // HAL_Delay(5000);
 //	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 50)
 //	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 50);
-//  fan_pressure(10,0);
+//  fan_pressure(10,0);f
  // __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 400);
  // Kd = 10;
 if(switch_cheack2()==0){
@@ -418,7 +418,7 @@ if(switch_cheack2()==0){
 //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
  // __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 400);
- //Motor(500,500);
+// Motor(500,500);
 
 //  mode_Selection(1);
 LED(5);

@@ -534,7 +534,7 @@ inline void second_driv(float log){
 			hu++;
 
 		}
-		if(abs(i-cou_buff)<=100 || (cao >= 500 && abs(i-cou_buff)<=300)){
+		if(abs(i-cou_buff)<=100 || (cao >= 500 && abs(i-cou_buff)<=500)){
 
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);

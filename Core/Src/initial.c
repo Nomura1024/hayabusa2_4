@@ -271,8 +271,8 @@ if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_15) ==0) maker_right = true;
 void fan_pressure(float L,float R){
 	int fanL=0;
 	int fanR=0;
-	if(L>120)L=120;
-	if(R>120)R=120;
+	if(L>120)L=150;
+	if(R>120)R=150;
 
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, L);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, R);

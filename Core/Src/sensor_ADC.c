@@ -68,6 +68,7 @@ inline float senseGet(){
 	float sensR=0;
 	uint32_t sens[SENSOR_NUMBER];
 	float sensRatio[SENSOR_NUMBER];
+	static float sens_buff[SENSOR_NUMBER];
 	static uint8_t error_count=0;
 	uint8_t black= 0;
 
@@ -90,6 +91,8 @@ inline float senseGet(){
 			sens[i] = ADC_Small[i] ;
 		}
 		sensRatio[i] = (1000.0f/(float)ADC_dif[i])*((float)(sens[i]-(float)ADC_Small[i]));
+//		sensRatio[i] = (sensRatio_buff[i]+sensRatio[i])/2;
+//		sensRatio_buff[i]=sensRatio[i];
 		if(sensRatio[i] >= 600) black++;
 //		if(i<=5)sensL += sensRatio[i];
 //		if(i>=7)sensR += sensRatio[i];
@@ -106,7 +109,7 @@ inline float senseGet(){
 	//if ((sensL+sensR)/12<=400){
 //	if ((sensRatio[0]+sensRatio[12])/2<=500 /*|| (sensRatio[1]+sensRatio[11])/2 <= 650*/) {
 //	if ((sensRatio[0]<=800 && sensRatio[12]<=800) && (sensRatio[1]<=800 && sensRatio[11]<=800)) {
-	if ((sensRatio[0]<=600 || sensRatio[1]<=600) && (sensRatio[11]<=600 || sensRatio[12]<=600) && sensRatio[6]<=600) {
+	if ((sensRatio[0]<=600 || sensRatio[1]<=500) && (sensRatio[11]<=500 || sensRatio[12]<=600) && sensRatio[6]<=800) {
 		cross_line=true;
 		cross_flag=0;
 	}
