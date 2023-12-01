@@ -183,7 +183,7 @@ void mode(){
 			HAL_Delay(300);
 			off_angle();
 			HAL_Delay(100);
-			fan_pressure(100,100);
+			fan_pressure(120,120);
 			HAL_Delay(1000);
 			log_init ();
 			lcd_clear();
@@ -288,7 +288,7 @@ void mode(){
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2060);
 //				fan_pressure(13.4,13.4);
 //			}else {
-				fan_pressure(120,120);
+				fan_pressure(160,160);
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 2020);
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2080);
 //			}
@@ -406,8 +406,7 @@ if(switch_cheack2()==0){
 	LED(4);
 	LED2(4);
 	HAL_Delay(500);
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 100);
-	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 100);
+	fan_pressure(150,150);
 	while(1);
 }
 //  HAL_TIM_Base_Start_IT(&htim6);
@@ -418,11 +417,11 @@ if(switch_cheack2()==0){
 //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
  // __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 400);
-// Motor(500,500);
+ //Motor(500,500);
 
 //  mode_Selection(1);
 LED(5);
-LED2(5);
+LED2(4);
 //  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 2000);
 	//IMU_init();
 	//off_angle();

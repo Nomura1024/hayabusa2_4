@@ -20,7 +20,7 @@ extern float speedget ;
 //float speedval_I=0 ;
 inline float Line_Motor(){
 	static float sensvalBuf;
-	static int sensval_I = 0;
+	static float sensval_I = 0;
 	static float sensval_IBuf ;
 	float sensval_D =0;
 	float sensval;//偏差
@@ -74,7 +74,7 @@ inline float speed_get(){
 	speedget_R = load_R/T;
 //	if(load_L <= 0) load_L=0;
 //	if(load_R <= 0) load_R=0;
-	load = (load_R+load_L)/2.0f;
+	load = (load_R+load_L)/2.0;
 	//load = (((24.1/4096)*(float)L)+((24.1/4096)*(float)R))/2;
 	speedget = (speedget_R+speedget_L)/2;
 	//speedbuffg += speedget*T;
@@ -94,7 +94,7 @@ inline void Speed_Motor(){
 	float val_v = 0;
 	float val_k=0;
 	float se=0;
-	static int speedval_I=0 ;
+	static float speedval_I=0 ;
 	static float speed_buff=0;
 	float val= 0;
 	float sKp = 2.5;//1.8

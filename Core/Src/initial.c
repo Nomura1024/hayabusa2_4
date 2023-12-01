@@ -271,8 +271,8 @@ if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_15) ==0) maker_right = true;
 void fan_pressure(float L,float R){
 	int fanL=0;
 	int fanR=0;
-	if(L>120)L=150;
-	if(R>120)R=150;
+	if(L>220)L=220;
+	if(R>220)R=220;
 
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, L);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, R);
@@ -297,12 +297,12 @@ void driv_fan(float speed_now){
 }
 void flashcheck(){
 	if(work_ram[28] != 0){
-		  work_ram[26]=1800;
+		  work_ram[26]=2500;
 		  work_ram[27]=200;
 		  work_ram[28]=0;
 		  work_ram[29]=42;
-		  work_ram[31]=17;
-		  work_ram[32]=4;
+		  work_ram[31]=22;
+		  work_ram[32]=6;
 		  work_ram[33] = 2000;
 		  work_ram[34] = 3000;
 		  work_ram[35] = 3500;

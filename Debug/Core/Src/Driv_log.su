@@ -4,6 +4,6 @@ Driv_log.c:56:6:log_write	16	static
 Driv_log.c:62:13:first_cale	24	static
 Driv_log.c:133:13:first_driv	16	static
 Driv_log.c:161:5:logsecond_Speed	32	static
-Driv_log.c:251:13:log_Cal	112	static
-Driv_log.c:433:13:second_driv	48	static
-Driv_log.c:584:6:log_play	120	static
+Driv_log.c:264:13:log_Cal	112	static
+Driv_log.c:446:13:second_driv	48	static
+Driv_log.c:597:6:log_play	120	static

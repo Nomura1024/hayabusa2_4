@@ -172,20 +172,20 @@ int logsecond_Speed(double h){
 //	else if(h < 800)  spee = work_ram[34];
 //	else if(h < 1000) spee = work_ram[33];
 //	else  spee = work_ram[32];
-	case 1:
-		h=h-100;
-		if(h<100) h=0;
-		if(h>1000) h=1000;
-		spee= (5500*h)/1000;
-		spee=spee+2500;
+//	case 0://bluee
+//		h=h-100;
+//		if(h<100) h=0;
+//		if(h>1000) h=1000;
+//		spee= (5500*h)/1000;
+//		spee=spee+2500;
 //		if(h < 100) spee = 1700;
 //		else if(h < 300)  spee = 2000;
 //		else if(h < 500)  spee = 2500;
 //		else if(h < 800)  spee = 3500;
 //		else if(h < 1000) spee = 4000;
 //		else spee = 5500;
-		break;
-	case 2:
+	//	break;
+	case 1://green
 //		if(h < 100) spee = 1800;
 //		else if(h < 300)  spee = 2400;
 //		else if(h < 500)  spee = 2700;
@@ -196,14 +196,14 @@ int logsecond_Speed(double h){
 		if(h<100) h=0;
 		if(h>1000) h=1000;
 		spee= (6500*h)/1000;
-		spee=spee+2500;
+		spee=spee+2800;
 
 		break;
-	case 3:
+	case 2://light blue
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (6000*h)/1000;
+		spee= (6800*h)/1000;
 		spee=spee+2800;
 //		if(h < 100) spee = 2000;
 //		else if(h < 300)  spee = 2400;
@@ -213,7 +213,7 @@ int logsecond_Speed(double h){
 //		else spee = 6000;
 		break;
 
-	case 4:
+	case 3://red
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
@@ -222,20 +222,33 @@ int logsecond_Speed(double h){
 
 		break;
 
-	case 5:
+	case 4://pink
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (6000*h)/1000;
+		spee= (6500*h)/1000;
+		spee=spee+3000;
+		break;
+	case 5://yellow
+		h=h-100;
+		if(h<100) h=0;
+		if(h>1000) h=1000;
+		spee= (7000*h)/1000;
 		spee=spee+3000;
 		break;
 	case 6:
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (6500*h)/1000;
-		spee=spee+3000;
-
+		spee= (7000*h)/1000;
+		spee=spee+3500;
+		break;
+	case 7:
+		h=h-100;
+		if(h<100) h=0;
+		if(h>1000) h=1000;
+		spee= (7000*h)/1000;
+		spee=spee+4000;
 		break;
 	}
 
@@ -539,7 +552,7 @@ inline void second_driv(float log){
 			hu++;
 
 		}
-		if(abs(i-cou_buff)<=100 || (cao >= 500 && abs(i-cou_buff)<=500)){
+		if(abs(i-cou_buff)<=30 /*|| (cao >= 500 && abs(i-cou_buff)<=500)*/){
 
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
