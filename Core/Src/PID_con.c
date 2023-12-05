@@ -74,7 +74,7 @@ inline float speed_get(){
 	speedget_R = load_R/T;
 //	if(load_L <= 0) load_L=0;
 //	if(load_R <= 0) load_R=0;
-	load = (load_R+load_L)/2.0;
+	load = (load_R+load_L)/2.0f;
 	//load = (((24.1/4096)*(float)L)+((24.1/4096)*(float)R))/2;
 	speedget = (speedget_R+speedget_L)/2;
 	//speedbuffg += speedget*T;

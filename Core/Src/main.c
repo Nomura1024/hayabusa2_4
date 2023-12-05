@@ -187,7 +187,7 @@ void mode(){
 			HAL_Delay(1000);
 			log_init ();
 			lcd_clear();
-			//Kd = 40;
+			Kd = 30;
 			TIM4 -> CNT = 32768;
 			TIM3 -> CNT = 32768;
 //			fan_pressure(9,9);
@@ -475,7 +475,7 @@ LED2(4);
 ////	if(isnan(cal) != 0)break;
 //	//c++;
 //	//printf("%d,",c);
-//	printf("%d\r\n",ghq);
+//	printf("%d\r\n",zg);
 //	plan_velo_adress+= 0x04;
 //
 //	HAL_Delay(1000);
