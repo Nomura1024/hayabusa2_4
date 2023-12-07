@@ -109,7 +109,7 @@ inline float senseGet(){
 	//if ((sensL+sensR)/12<=400){
 //	if ((sensRatio[0]+sensRatio[12])/2<=500 /*|| (sensRatio[1]+sensRatio[11])/2 <= 650*/) {
 //	if ((sensRatio[0]<=800 && sensRatio[12]<=800) && (sensRatio[1]<=800 && sensRatio[11]<=800)) {
-	if ((sensRatio[0]<=500 || sensRatio[1]<=400) && (sensRatio[11]<=400 || sensRatio[12]<=500) && sensRatio[6]<=800) {
+	if ((sensRatio[0]<=500 || sensRatio[1]<=500) && (sensRatio[11]<=500 || sensRatio[12]<=500) && sensRatio[6]<=800) {
 		cross_line=true;
 		cross_flag=0;
 	}

@@ -413,12 +413,13 @@ if(switch_cheack2()==0){
  // tuning();
 //  second_soeed = 2;
 //  log_Cal();
+Motor(00,00);
  	 mode();
 //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
  // __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 400);
  //Motor(500,500);
-
+ Motor(00,00);
 //  mode_Selection(1);
 LED(5);
 LED2(4);
