@@ -173,6 +173,7 @@ void LED2(uint8_t x){
 void error(){
 //	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, ESC_MIN);
 //	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, ESC_MIN);
+	Motor(0,0);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 0);
 	HAL_TIM_Base_Stop_IT(&htim6);
@@ -300,7 +301,7 @@ void flashcheck(){
 		  work_ram[26]=2500;
 		  work_ram[27]=200;
 		  work_ram[28]=0;
-		  work_ram[29]=42;
+		  work_ram[29]=32;
 		  work_ram[31]=22;
 		  work_ram[32]=6;
 		  work_ram[33] = 2000;

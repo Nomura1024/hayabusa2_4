@@ -185,7 +185,7 @@ int logsecond_Speed(double h){
 //		else if(h < 1000) spee = 4000;
 //		else spee = 5500;
 	//	break;
-	case 1://green
+	case 1://blue
 //		if(h < 100) spee = 1800;
 //		else if(h < 300)  spee = 2400;
 //		else if(h < 500)  spee = 2700;
@@ -199,7 +199,7 @@ int logsecond_Speed(double h){
 		spee=spee+2800;
 
 		break;
-	case 2://light blue
+	case 2://green
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
@@ -213,7 +213,7 @@ int logsecond_Speed(double h){
 //		else spee = 6000;
 		break;
 
-	case 3://red
+	case 3://light blue
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
@@ -222,28 +222,28 @@ int logsecond_Speed(double h){
 
 		break;
 
-	case 4://pink
+	case 4://red
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
 		spee= (6500*h)/1000;
 		spee=spee+3000;
 		break;
-	case 5://yellow
+	case 5://pink
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
 		spee= (7000*h)/1000;
 		spee=spee+3000;
 		break;
-	case 6:
+	case 6://yellow
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
 		spee= (7000*h)/1000;
 		spee=spee+3500;
 		break;
-	case 7:
+	case 7://white
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
