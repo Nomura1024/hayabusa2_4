@@ -195,16 +195,16 @@ int logsecond_Speed(double h){
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (6500*h)/1000;
-		spee=spee+2800;
+		spee= (7000*h)/1000;
+		spee=spee+2500;
 
 		break;
 	case 2://green
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (6800*h)/1000;
-		spee=spee+2800;
+		spee= (12000*h)/1000;
+		spee=spee+4000;
 //		if(h < 100) spee = 2000;
 //		else if(h < 300)  spee = 2400;
 //		else if(h < 500)  spee = 2700;
@@ -234,20 +234,20 @@ int logsecond_Speed(double h){
 		if(h<100) h=0;
 		if(h>1000) h=1000;
 		spee= (7000*h)/1000;
-		spee=spee+3000;
+		spee=spee+4000;
 		break;
 	case 6://yellow
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (7000*h)/1000;
-		spee=spee+3500;
+		spee= (8000*h)/1000;
+		spee=spee+4000;
 		break;
 	case 7://white
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (7000*h)/1000;
+		spee= (9000*h)/1000;
 		spee=spee+4000;
 		break;
 	}
@@ -472,6 +472,7 @@ inline void second_driv(float log){
 	logbuff = logbuff+ log;
 	logbuff2 = logbuff2 + log;
 	if(logbuff2>=10.000){
+		log_count++;
 		log_flag = 1;
 		cale = cale_val;
 		if((cale_buff-cale)<=0.05 && (cale_buff-cale)>=-0.05 )frp++;//0.005
@@ -497,7 +498,7 @@ inline void second_driv(float log){
 			if(secondsp[i]<1500)secondsp[i]=1500;
 		}
 		else goal=0;
-
+		if(count_num+100<=i) error();
 		Average_speed = secondsp[i];
 		co++;
 		i++;
@@ -583,6 +584,7 @@ inline void second_driv(float log){
 		logbuff=second_load[i];
 		cross_maker = false;
 		cros++;
+		if(work_ram[cros]>=5000 || work_ram[cros]<=0) error();
 	}
 	if(correc_maker==1){
 		frp=0;

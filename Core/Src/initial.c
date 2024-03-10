@@ -27,8 +27,10 @@ uint8_t maker_right;
 uint8_t maker_left;
 uint8_t maker_flag=0;
 uint8_t cross_flag=0;
+uint8_t error_count=0;
 void MX_TIM6_Init(void);
 void init(){
+
 	if(HAL_ADC_Start_DMA(&hadc1, (uint32_t *) analog, SENSOR_NUMBER) != HAL_OK){
 	  Error_Handler();
 	}
@@ -251,6 +253,13 @@ void Motor(int16_t MotorL,int16_t MotorR)
 	__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, MotorL);
 	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, MotorR);
 
+	if(MotorR+MotorL >3999){
+		error_count++;
+		if(error_count>=10000){
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+		}
+	}else error_count=0;
 
 }
 void sidemaker(){
@@ -262,7 +271,7 @@ if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_15) ==0) maker_right = true;
 
 	if(log_flag){
 	  if(cross_line) cross_flag++;
-	  if(cross_flag>=11) {
+	  if(cross_flag>=12) {
 		  cross_line=0;
 		  cross_flag=0;
 	  }

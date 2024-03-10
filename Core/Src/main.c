@@ -212,8 +212,8 @@ void mode(){
 				  while(maker_left);
 				  correc_maker = false;
 			  }
-			  if((maker_left || maker_right )&& cross_line==1 ){
-				  while(maker_left || maker_right);
+			  if((maker_right )&& cross_line==1 ){
+				  while(maker_right);
 				  cross_maker = true;
 			  }
 
@@ -314,8 +314,8 @@ void mode(){
 					  correc_maker = false;
 
 				  }
-			  if((maker_left || maker_right )&& cross_line==1 ){
-				  while(maker_left || maker_right);
+			  if((maker_right )&& cross_line==1 ){
+				  while(maker_right);
 				  cross_maker = true;
 			  }
 
@@ -456,9 +456,13 @@ LED2(4);
 //  fan_pressure(15,15);
 //mode_Selection(1);
 //  TIM3 -> CNT = 32768;
+  cal=39;
   while (1)
   {
 	  read_gyro_data();
+	  printf("%d,%d\r\n",cal-39,work_ram[cal]);
+	  cal++;
+	  if(work_ram[cal]>=6000)break;
 //	  a++;
 //	  if(a>=8)a=0;
 //	  LED(a);

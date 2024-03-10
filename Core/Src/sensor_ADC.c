@@ -71,6 +71,9 @@ inline float senseGet(){
 	static float sens_buff[SENSOR_NUMBER];
 	static uint8_t error_count=0;
 	uint8_t black= 0;
+	static uint8_t whiteL=0,whiteR=0;
+	static uint8_t check_white=0;
+	static uint log_count_buff=0;
 
 //	for(int i=0; i<SENSOR_NUMBER; i++){
 //		sens[i] = analog[i];
@@ -108,11 +111,46 @@ inline float senseGet(){
 //	}
 	//if ((sensL+sensR)/12<=400){
 //	if ((sensRatio[0]+sensRatio[12])/2<=500 /*|| (sensRatio[1]+sensRatio[11])/2 <= 650*/) {
-//	if ((sensRatio[0]<=800 && sensRatio[12]<=800) && (sensRatio[1]<=800 && sensRatio[11]<=800)) {
-	if ((sensRatio[0]<=500 || sensRatio[1]<=500) && (sensRatio[11]<=500 || sensRatio[12]<=500) && sensRatio[6]<=800) {
-		cross_line=true;
-		cross_flag=0;
+//	if (((sensRatio[0]+sensRatio[1]+sensRatio[2])/3<=500) && ((sensRatio[10]+sensRatio[11]+sensRatio[12])/3<=500)) {
+	if(sensRatio[0]<=400){
+		whiteL=true;
+		log_count_buff=log_count;
 	}
+	if(whiteL){
+		check_white++;
+		if(sensRatio[12]<=400){
+			cross_line=true;
+			cross_flag=0;
+			whiteL=0;
+			check_white =0;
+		}
+		if((log_count-log_count_buff)>=2) {
+			check_white=0;
+			whiteL=0;
+		}
+	}
+	if(sensRatio[12]<=400){
+		whiteR=true;
+		log_count_buff=log_count;
+	}
+	if(whiteR){
+		check_white++;
+		if(sensRatio[0]<=400){
+			cross_line=true;
+			cross_flag=0;
+			whiteR=0;
+			check_white =0;
+		}
+		if((log_count-log_count_buff)>=2) {
+			check_white=0;
+			whiteR=0;
+		}
+	}
+//	if ((sensRatio[0]<=500 || sensRatio[1]<=400) && (sensRatio[11]<=400 || sensRatio[12]<=500) && sensRatio[6]<=800) {
+//					cross_line=true;
+//					cross_flag=0;
+//	}
+
 //	for(int i=0; i<SENSOR_NUMBER; i++){
 //		if(sensRatio[i] >= 600) black++;
 //	}
