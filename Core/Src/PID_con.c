@@ -97,8 +97,8 @@ inline void Speed_Motor(){
 	static float speedval_I=0 ;
 	static float speed_buff=0;
 	float val= 0;
-	float sKp = 2.5;//1.8
-	float sKi= 28;//20
+	float sKp = 2.2;//2.5
+	float sKi= 25;//28
 	//float lKi= 20;
 
 	speedval = (float)Average_speed - speed_get();
@@ -153,10 +153,10 @@ inline void Speed_Motor(){
 		MotorL = (val_v-se)+val_k;
 		MotorR = (val_v-se)-val_k;
 	}
-	if(speedval>=2000){
-		MotorL=MotorL+200;
-		MotorR=MotorR+200;
-	}
+//	if(speedval>=2000){
+//		MotorL=MotorL+200;
+//		MotorR=MotorR+200;
+//	}
 //	if(MotorL-MotorR <= 2000) fan_pressure(14.5,15.0);
 //	else fan_pressure(14.5,14.5);
 //	if(MotorR-MotorL <= 2000) fan_pressure(15.0,14.5);

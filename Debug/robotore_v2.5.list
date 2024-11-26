@@ -8876,7 +8876,7 @@ void mode(){
 			HAL_Delay(100);
  800c978:	2064      	movs	r0, #100	; 0x64
  800c97a:	f001 fef5 	bl	800e768 <HAL_Delay>
-			fan_pressure(120,120);
+			fan_pressure(140,140);
  800c97e:	eddf 0a97 	vldr	s1, [pc, #604]	; 800cbdc <mode+0x32c>
  800c982:	ed9f 0a96 	vldr	s0, [pc, #600]	; 800cbdc <mode+0x32c>
  800c986:	f7ff fe11 	bl	800c5ac <fan_pressure>
@@ -9086,7 +9086,7 @@ void mode(){
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2060);
 //				fan_pressure(13.4,13.4);
 //			}else {
-				fan_pressure(160,160);
+				fan_pressure(180,180);
  800cad2:	eddf 0a51 	vldr	s1, [pc, #324]	; 800cc18 <mode+0x368>
  800cad6:	ed9f 0a50 	vldr	s0, [pc, #320]	; 800cc18 <mode+0x368>
  800cada:	f7ff fd67 	bl	800c5ac <fan_pressure>
@@ -9246,7 +9246,7 @@ void mode(){
  800cbd0:	08016470 	.word	0x08016470
  800cbd4:	08016478 	.word	0x08016478
  800cbd8:	2000c0bc 	.word	0x2000c0bc
- 800cbdc:	42f00000 	.word	0x42f00000
+ 800cbdc:	430c0000 	.word	0x430c0000
  800cbe0:	2000c30e 	.word	0x2000c30e
  800cbe4:	40000800 	.word	0x40000800
  800cbe8:	40000400 	.word	0x40000400
@@ -9261,7 +9261,7 @@ void mode(){
  800cc0c:	2000c250 	.word	0x2000c250
  800cc10:	00000000 	.word	0x00000000
  800cc14:	2000c318 	.word	0x2000c318
- 800cc18:	43200000 	.word	0x43200000
+ 800cc18:	43340000 	.word	0x43340000
  800cc1c:	442f0000 	.word	0x442f0000
  800cc20:	2000c2cc 	.word	0x2000c2cc
  800cc24:	08016480 	.word	0x08016480
@@ -9331,6 +9331,8 @@ int main(void)
 
   init();
  800cc6a:	f7ff f939 	bl	800bee0 <init>
+//  work_ram[26]=2500;
+//  Flash_store();
  // ADCinit();
 
 //  brushi_init();
@@ -9357,7 +9359,7 @@ if(switch_cheack2()==0){
 	HAL_Delay(500);
  800cc8c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
  800cc90:	f001 fd6a 	bl	800e768 <HAL_Delay>
-	fan_pressure(150,150);
+	fan_pressure(180,180);
  800cc94:	eddf 0a29 	vldr	s1, [pc, #164]	; 800cd3c <main+0x114>
  800cc98:	ed9f 0a28 	vldr	s0, [pc, #160]	; 800cd3c <main+0x114>
  800cc9c:	f7ff fc86 	bl	800c5ac <fan_pressure>
@@ -9377,11 +9379,11 @@ Motor(00,00);
 //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
  // __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 400);
- //Motor(500,500);
- Motor(00,00);
+ Motor(00,000);
  800ccae:	2100      	movs	r1, #0
  800ccb0:	2000      	movs	r0, #0
  800ccb2:	f7ff fbbd 	bl	800c430 <Motor>
+// Motor(300,300);
 //  mode_Selection(1);
 LED(5);
  800ccb6:	2005      	movs	r0, #5
@@ -9484,7 +9486,7 @@ LED2(4);
  800cd36:	46bd      	mov	sp, r7
  800cd38:	bd80      	pop	{r7, pc}
  800cd3a:	bf00      	nop
- 800cd3c:	43160000 	.word	0x43160000
+ 800cd3c:	43340000 	.word	0x43340000
  800cd40:	40000400 	.word	0x40000400
  800cd44:	2000c318 	.word	0x2000c318
  800cd48:	08016484 	.word	0x08016484

@@ -35,7 +35,7 @@ void init(){
 	  Error_Handler();
 	}
 
-	if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2) != HAL_OK){
+	if (HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1) != HAL_OK){
 		  Error_Handler();
 	}
 	if (HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_3) != HAL_OK){
@@ -82,45 +82,45 @@ void init(){
 }
 void LED(uint8_t x){
 	switch(x){
-		case 1:
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
+		case 1://blue
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
 			break;
-		case 2:
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
-			break;
-		case 3:
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
-			break;
-		case 4:
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+		case 2://green
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
-			break;
-		case 5:
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
-			break;
-		case 6:
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+			break;
+		case 3://light blue
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
-			break;
-		case 7:
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
-			break;
-		case 8:
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+			break;
+		case 4://red
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+			break;
+		case 5://pink
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+			break;
+		case 6://yellow
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+			break;
+		case 7://white
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+			break;
+		case 8://
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
 			break;
 
 	}
@@ -182,7 +182,10 @@ void error(){
 
 	while(1){
 		Motor(0,0);
+		LED(4);
+		HAL_Delay(1000);
 		LED(1);
+		HAL_Delay(1000);
 	}
 }
 void stop(){
@@ -232,18 +235,18 @@ void Motor(int16_t MotorL,int16_t MotorR)
 //
 //	}
 	if(MotorL > 0 ){
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
 
 
 	}else if(MotorL < 0){
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
 		MotorL = -MotorL;
 	}
 	if(MotorR > 0 ){
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 
 	}else if(MotorR < 0){
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
 		MotorR = -MotorR;
 
 	}
@@ -251,13 +254,13 @@ void Motor(int16_t MotorL,int16_t MotorR)
 	if (MotorL > 2000) MotorL = 2000;
 
 	__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, MotorL);
-	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, MotorR);
+	__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, MotorR);
 
 	if(MotorR+MotorL >3999){
 		error_count++;
 		if(error_count>=10000){
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
-			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 0);
+			__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
 		}
 	}else error_count=0;
 
@@ -281,8 +284,8 @@ if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_15) ==0) maker_right = true;
 void fan_pressure(float L,float R){
 	int fanL=0;
 	int fanR=0;
-	if(L>220)L=220;
-	if(R>220)R=220;
+	if(L>600)L=600;
+	if(R>600)R=600;
 
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, L);
 	__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, R);

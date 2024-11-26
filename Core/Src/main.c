@@ -183,16 +183,14 @@ void mode(){
 			HAL_Delay(300);
 			off_angle();
 			HAL_Delay(100);
-			fan_pressure(120,120);
+			fan_pressure(400,400);
 			HAL_Delay(1000);
 			log_init ();
 			lcd_clear();
 			Kd = 30;
 			TIM4 -> CNT = 32768;
 			TIM3 -> CNT = 32768;
-//			fan_pressure(9,9);
-//			__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 1940);
-//			__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2000);
+
 			HAL_TIM_Base_Start_IT(&htim6);
 			LED(2);
 			maker_flag=0;
@@ -227,46 +225,7 @@ void mode(){
 		case 4:
 			accel_tuning();
 			break;
-//		case 4:
-//			lcd_printf("%d\n",log_count);
-//			log_init ();
-//			int c=0;
-//			log_Cal();
-//			//FLASH_EreaseSector(10);
-//			//log_Cal();
-//			//FLASH_Erease10();
-//			printf("%lf\r\n",second_load[0]);
-//			printf("%lf\r\n",second_load[1]);
-//			printf("%lf\r\n",second_load[2]);
-//			printf("%lf\r\n",second_load[3]);
-//			printf("%lf\r\n",second_load[4]);
-//			printf("%lf\r\n",second_load[418]);
-//			while(1){
-//				ghq = *(uint32_t*)side_adress;
-//				cal = *(float*)side_adress;
-//				if(isnan(cal) != 0)break;
-//				c++;
-//				printf("%d,",c);
-//				printf("%d\r\n",ghq);
-//				side_adress+= 0x04;
-//
-//				HAL_Delay(100);
-//			}
-//			c=0;
-//			while(1){
-//				ghq = *(uint32_t*)plan_velo_adress;
-//				cal = *(float*)plan_velo_adress;
-//				if(isnan(cal) != 0)break;
-//				c++;
-//				printf("%d,",c);
-//				printf("%d\r\n",ghq);
-//				plan_velo_adress+= 0x04;
-//
-//				HAL_Delay(100);
-//			}
-////			printf("%lf\r\n",fao);
-////			printf("%d\r\n",c);
-//			break;
+
 		case 5:
 			i=1;
 			HAL_Delay(500);
@@ -288,7 +247,7 @@ void mode(){
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2060);
 //				fan_pressure(13.4,13.4);
 //			}else {
-				fan_pressure(160,160);
+				fan_pressure(550,550);
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 2020);
 //				__HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 2080);
 //			}
@@ -386,6 +345,8 @@ int main(void)
 //  HAL_Delay(100);
 
   init();
+//  work_ram[26]=2500;
+//  Flash_store();
  // ADCinit();
 
 //  brushi_init();
@@ -393,7 +354,7 @@ int main(void)
   IMU_init();
  // off_angle();
 //  IMU_init();
- // HAL_Delay(100);
+  HAL_Delay(100);
 
  // off_angle();
  // HAL_Delay(5000);
@@ -405,8 +366,8 @@ int main(void)
 if(switch_cheack2()==0){
 	LED(4);
 	LED2(4);
-	HAL_Delay(500);
-	fan_pressure(150,150);
+	HAL_Delay(1000);
+	fan_pressure(550,550);
 	while(1);
 }
 //  HAL_TIM_Base_Start_IT(&htim6);
@@ -414,15 +375,15 @@ if(switch_cheack2()==0){
 //  second_soeed = 2;
 //  log_Cal();
 Motor(00,00);
- 	 mode();
+mode();
 //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_SET);
  // __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 400);
- //Motor(500,500);
- Motor(00,00);
+// Motor(00,000);
+// Motor(300,300);
 //  mode_Selection(1);
 LED(5);
-LED2(4);
+//LED2(4);
 //  __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 2000);
 	//IMU_init();
 	//off_angle();
@@ -460,9 +421,10 @@ LED2(4);
   while (1)
   {
 	  read_gyro_data();
-	  printf("%d,%d\r\n",cal-39,work_ram[cal]);
+	  sidemaker();
+	//  printf("%d,%d\r\n",cal-39,work_ram[cal]);
 	  cal++;
-	  if(work_ram[cal]>=6000)break;
+//	  if(work_ram[cal]>=6000)break;
 //	  a++;
 //	  if(a>=8)a=0;
 //	  LED(a);
@@ -479,8 +441,8 @@ LED2(4);
 ////	cal = *(float*)side_adress;
 ////	if(isnan(cal) != 0)break;
 //	//c++;
-//	//printf("%d,",c);
-//	printf("%d\r\n",zg);
+	//printf("hello");
+	printf("%d\r\n",zg);
 //	plan_velo_adress+= 0x04;
 //
 //	HAL_Delay(1000);
@@ -841,7 +803,7 @@ static void MX_TIM1_Init(void)
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
   sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
   sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -1190,7 +1152,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12
                           |GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
@@ -1224,9 +1186,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA8 PA10 PA11 PA12
+  /*Configure GPIO pins : PA9 PA10 PA11 PA12
                            PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12
+  GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12
                           |GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;

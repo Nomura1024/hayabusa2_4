@@ -28,34 +28,34 @@ endif
 
 -include ../makefile.defs
 
-BUILD_ARTIFACT_NAME := robotore_v2.5
+BUILD_ARTIFACT_NAME := robotore_v25_4s
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX := 
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-robotore_v2.5.elf \
+robotore_v25_4s.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-robotore_v2.5.list \
+robotore_v25_4s.list \
 
 OBJCOPY_BIN += \
-robotore_v2.5.bin \
+robotore_v25_4s.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: robotore_v2.5.elf secondary-outputs
+main-build: robotore_v25_4s.elf secondary-outputs
 
 # Tool invocations
-robotore_v2.5.elf: $(OBJS) $(USER_OBJS) C:\Users\Owner\STM32CubeIDE\workspace_1.5.1\robotore_v2.5\STM32F405RGTX_FLASH.ld
-	arm-none-eabi-gcc -o "robotore_v2.5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Owner\STM32CubeIDE\workspace_1.5.1\robotore_v2.5\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="robotore_v2.5.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+robotore_v25_4s.elf: $(OBJS) $(USER_OBJS) C:\Users\Owner\STM32CubeIDE\workspace_1.5.1\robotore_v25_4s\STM32F405RGTX_FLASH.ld
+	arm-none-eabi-gcc -o "robotore_v25_4s.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Owner\STM32CubeIDE\workspace_1.5.1\robotore_v25_4s\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="robotore_v25_4s.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -64,13 +64,13 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-robotore_v2.5.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "robotore_v2.5.list"
+robotore_v25_4s.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "robotore_v25_4s.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-robotore_v2.5.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "robotore_v2.5.bin"
+robotore_v25_4s.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "robotore_v25_4s.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 

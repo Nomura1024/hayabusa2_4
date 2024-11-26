@@ -112,24 +112,22 @@ inline float senseGet(){
 	//if ((sensL+sensR)/12<=400){
 //	if ((sensRatio[0]+sensRatio[12])/2<=500 /*|| (sensRatio[1]+sensRatio[11])/2 <= 650*/) {
 //	if (((sensRatio[0]+sensRatio[1]+sensRatio[2])/3<=500) && ((sensRatio[10]+sensRatio[11]+sensRatio[12])/3<=500)) {
-	if(sensRatio[0]<=400){
+	if(sensRatio[0]<=400 || cross_line==0){
 		whiteL=true;
 		log_count_buff=log_count;
 	}
 	if(whiteL){
-		check_white++;
 		if(sensRatio[12]<=400){
 			cross_line=true;
 			cross_flag=0;
 			whiteL=0;
-			check_white =0;
 		}
-		if((log_count-log_count_buff)>=2) {
-			check_white=0;
+		if((log_count-log_count_buff)>2) {
 			whiteL=0;
 		}
 	}
-	if(sensRatio[12]<=400){
+
+	if(sensRatio[12]<=400 || cross_line==0){
 		whiteR=true;
 		log_count_buff=log_count;
 	}
@@ -139,10 +137,8 @@ inline float senseGet(){
 			cross_line=true;
 			cross_flag=0;
 			whiteR=0;
-			check_white =0;
 		}
-		if((log_count-log_count_buff)>=2) {
-			check_white=0;
+		if((log_count-log_count_buff)>2) {
 			whiteR=0;
 		}
 	}

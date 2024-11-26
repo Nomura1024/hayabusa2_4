@@ -163,35 +163,9 @@ int logsecond_Speed(double h){
 	float ratio=0;
 	if(h<0)h=-h;
 	switch(second_soeed){
-	//h = Driving_log[6100+c]/(Driving_log[c]*0.01);
 
-
-//	if(h < 100) spee = work_ram[37];
-//	else if(h < 300)  spee = work_ram[36];
-//	else if(h < 500)  spee = work_ram[35];
-//	else if(h < 800)  spee = work_ram[34];
-//	else if(h < 1000) spee = work_ram[33];
-//	else  spee = work_ram[32];
-//	case 0://bluee
-//		h=h-100;
-//		if(h<100) h=0;
-//		if(h>1000) h=1000;
-//		spee= (5500*h)/1000;
-//		spee=spee+2500;
-//		if(h < 100) spee = 1700;
-//		else if(h < 300)  spee = 2000;
-//		else if(h < 500)  spee = 2500;
-//		else if(h < 800)  spee = 3500;
-//		else if(h < 1000) spee = 4000;
-//		else spee = 5500;
-	//	break;
 	case 1://blue
-//		if(h < 100) spee = 1800;
-//		else if(h < 300)  spee = 2400;
-//		else if(h < 500)  spee = 2700;
-//		else if(h < 800)  spee = 3800;
-//		else if(h < 1000) spee = 4000;
-//		else spee = 6000;
+
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
@@ -203,21 +177,15 @@ int logsecond_Speed(double h){
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (12000*h)/1000;
-		spee=spee+4000;
-//		if(h < 100) spee = 2000;
-//		else if(h < 300)  spee = 2400;
-//		else if(h < 500)  spee = 2700;
-//		else if(h < 800)  spee = 3800;
-//		else if(h < 1000) spee = 4000;
-//		else spee = 6000;
+		spee= (7000*h)/1000;
+		spee=spee+2800;
 		break;
 
 	case 3://light blue
 		h=h-100;
 		if(h<100) h=0;
 		if(h>1000) h=1000;
-		spee= (7000*h)/1000;
+		spee= (8000*h)/1000;
 		spee=spee+2800;
 
 		break;
@@ -252,12 +220,7 @@ int logsecond_Speed(double h){
 		break;
 	}
 
-//	if(h < 100) spee = 1400;
-//		else if(h < 300)  spee = 1600;
-//		else if(h < 500)  spee = 1800;
-//		else if(h < 800)  spee = 2100;
-//		else if(h < 1000) spee = 4100;
-//		else if(1000 < h)spee = 4600;
+
 	return spee;
 
 }
@@ -580,11 +543,12 @@ inline void second_driv(float log){
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
+		if(work_ram[cros]>=50000 || work_ram[cros]<=0) error();
 		i = work_ram[cros];
 		logbuff=second_load[i];
 		cross_maker = false;
 		cros++;
-		if(work_ram[cros]>=5000 || work_ram[cros]<=0) error();
+
 	}
 	if(correc_maker==1){
 		frp=0;
